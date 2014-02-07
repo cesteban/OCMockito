@@ -19,13 +19,19 @@
     #import <OCHamcrestIOS/OCHamcrestIOS.h>
 #endif
 
-struct MKTStruct {
+typedef void (^StubObjectBlockArgument)(void);
+
+typedef struct {
     int anInt;
     char aChar;
     double *arrayOfDoubles;
-};
-typedef struct MKTStruct MKTStruct;
-#define allocDoubleArray() (double *)malloc(10*sizeof(double));
+} MKTStruct;
+
+double *createArrayOf10Doubles(void)
+{
+    return malloc(10*sizeof(double));
+}
+
 
 @interface ReturningObject : NSObject
 @end
@@ -37,6 +43,7 @@ typedef struct MKTStruct MKTStruct;
 - (Class)methodReturningClassWithClassArg:(Class)arg { return [self class]; }
 - (id)methodReturningObjectWithArg:(id)arg { return self; }
 - (id)methodReturningObjectWithIntArg:(int)arg { return self; }
+- (id)methodReturningObjectWithBlockArg:(StubObjectBlockArgument)arg { return self; }
 - (id)methodReturningObjectWithStruct:(MKTStruct)arg { return NO; };
 
 - (BOOL)methodReturningBool { return NO; }
@@ -121,31 +128,71 @@ typedef struct MKTStruct MKTStruct;
     assertThat([mockObject methodReturningObjectWithIntArg:1], is(@"FOO"));
 }
 
+- (void)testStub_ShouldReturnValueForSameBlockArgument
+{
+    StubObjectBlockArgument block = ^{ };
+    [given([mockObject methodReturningObjectWithBlockArg:block]) willReturn:@"FOO"];
+    assertThat([mockObject methodReturningObjectWithBlockArg:block], is(@"FOO"));
+}
+
+- (void)testStub_ShouldReturnNilForInlineBlockArgument
+{
+    [given([mockObject methodReturningObjectWithBlockArg:^{ }])
+     willReturn:@"FOO"];
+    assertThat([mockObject methodReturningObjectWithBlockArg:^{ }], is(nilValue()));
+}
+
+- (void)testStub_ShouldReturnNilForInlineBlockArgumentCapturingScopeVariable
+{
+    NSNumber *someVariable = @0;
+    [given([mockObject methodReturningObjectWithBlockArg:^{ [someVariable description]; }])
+     willReturn:@"FOO"];
+    assertThat([mockObject methodReturningObjectWithBlockArg:^{ [someVariable description]; }], is(nilValue()));
+}
+
+- (void)testStub_ShouldNotReturnValueForMatchingBlockArgument
+{
+    StubObjectBlockArgument emptyBlock = ^{ };
+    StubObjectBlockArgument anotherEmptyBlock = ^{ };
+    [given([mockObject methodReturningObjectWithBlockArg:emptyBlock]) willReturn:@"FOO"];
+    assertThat([mockObject methodReturningObjectWithBlockArg:anotherEmptyBlock], isNot(@"FOO"));
+}
+
 - (void)testStub_ShouldReturnValueForSameStructArgument
 {
-    double *a = allocDoubleArray();
+    double *a = createArrayOf10Doubles();
     MKTStruct struct1 = {1, 'a', a};
     [given([mockObject methodReturningObjectWithStruct:struct1]) willReturn:@"FOO"];
+
     assertThat([mockObject methodReturningObjectWithStruct:struct1], is(@"FOO"));
+
+    free(a);
 }
 
 - (void)testStub_ShouldReturnValueForMatchingStructArgument
 {
-    double *a = allocDoubleArray();
+    double *a = createArrayOf10Doubles();
     MKTStruct struct1 = {1, 'a', a};
     MKTStruct struct2 = {1, 'a', a};
     [given([mockObject methodReturningObjectWithStruct:struct1]) willReturn:@"FOO"];
+
     assertThat([mockObject methodReturningObjectWithStruct:struct2], is(@"FOO"));
+
+    free(a);
 }
 
 - (void)testStub_ShoulReturnNilForNotMatchingStructArgument
 {
-    double *a = allocDoubleArray();
-    double *b = allocDoubleArray();
+    double *a = createArrayOf10Doubles();
+    double *b = createArrayOf10Doubles();
     MKTStruct struct1 = {1, 'a', a};
     MKTStruct struct2 = {1, 'a', b};
     [given([mockObject methodReturningObjectWithStruct:struct1]) willReturn:@"FOO"];
+
     assertThat([mockObject methodReturningObjectWithStruct:struct2], is(nilValue()));
+
+    free(a);
+    free(b);
 }
 
 - (void)testStub_ShouldAcceptMatcherForNumericArgument

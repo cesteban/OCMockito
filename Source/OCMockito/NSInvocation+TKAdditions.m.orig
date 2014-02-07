@@ -6,9 +6,14 @@
 
 #import "NSInvocation+TKAdditions.h"
 
+<<<<<<< HEAD
+typedef struct MKTDummyStruct {} MKTDummyStruct;
+typedef void (^TKBlockType)(void);
+=======
 typedef void (^TKBlockType)(void);
 typedef struct {} MKTDummyStructure;
 
+>>>>>>> jonreid/master
 
 NSArray *TKArrayArgumentsForInvocation(NSInvocation *invocation)
 {
@@ -35,7 +40,20 @@ NSArray *TKArrayArgumentsForInvocation(NSInvocation *invocation)
         {
             __unsafe_unretained id arg = nil;
             [invocation getArgument:&arg atIndex:i];
+<<<<<<< HEAD
+            if (!strcmp(argType, @encode(TKBlockType)))
+            {
+                // Make sure blocks are copied
+                [args insertObject:(arg ? [arg copy] : [NSNull null]) atIndex:ai];
+            }
+            else
+            {
+                [args insertObject:(arg ? arg : [NSNull null]) atIndex:ai];
+            }
+
+=======
             [args insertObject:(arg ? arg : [NSNull null]) atIndex:ai];
+>>>>>>> jonreid/master
         }
         else if (strcmp(argType, @encode(SEL)) == 0)
         {
@@ -139,7 +157,11 @@ NSArray *TKArrayArgumentsForInvocation(NSInvocation *invocation)
             [invocation getArgument:&arg atIndex:i];
             [args insertObject:[NSValue valueWithPointer:arg] atIndex:ai];
         }
+<<<<<<< HEAD
+        else if((argType[0] == @encode(MKTDummyStruct)[0]))
+=======
         else if((argType[0] == @encode(MKTDummyStructure)[0]))
+>>>>>>> jonreid/master
         {
             NSUInteger structSize = 0;
             NSGetSizeAndAlignment(argType, &structSize, NULL);
