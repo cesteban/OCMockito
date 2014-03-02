@@ -16,10 +16,10 @@
 static BOOL isValidMockClass(id mock)
 {
     NSString *className = NSStringFromClass([mock class]);
-    return ([className hasPrefix:@"MKTObjectMock"] ||
-            [className hasPrefix:@"MKTProtocolMock"] ||
-            [className hasPrefix:@"MKTClassObjectMock"] ||
-            [className hasPrefix:@"MKTObjectAndProtocolMock"]);
+    return [className isEqualToString:@"MKTObjectMock"] ||
+            [className isEqualToString:@"MKTProtocolMock"] ||
+            [className isEqualToString:@"MKTClassObjectMock"] ||
+            [className isEqualToString:@"MKTObjectAndProtocolMock"];
 }
 
 static NSString *actualTypeName(id mock)

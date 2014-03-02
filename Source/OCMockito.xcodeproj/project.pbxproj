@@ -124,10 +124,6 @@
 		08FD4B2B1509BEA90004E1FA /* MKTBaseMockObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 08FD4B281509BEA90004E1FA /* MKTBaseMockObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		08FD4B2C1509BEA90004E1FA /* MKTBaseMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FD4B291509BEA90004E1FA /* MKTBaseMockObject.m */; };
 		08FD4B2D1509BEA90004E1FA /* MKTBaseMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FD4B291509BEA90004E1FA /* MKTBaseMockObject.m */; };
-		1A37AC0B18C203FA004596F1 /* MKTMockFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A37AC0918C203FA004596F1 /* MKTMockFactory.h */; };
-		1A37AC0C18C203FA004596F1 /* MKTMockFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A37AC0A18C203FA004596F1 /* MKTMockFactory.m */; };
-		1A37AC0D18C20405004596F1 /* MKTMockFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A37AC0A18C203FA004596F1 /* MKTMockFactory.m */; };
-		1A37AC0F18C20BDF004596F1 /* MKTMockFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A37AC0E18C20BDF004596F1 /* MKTMockFactoryTest.m */; };
 		361533C6153F275800BB982B /* MKTAtLeastTimes.h in Headers */ = {isa = PBXBuildFile; fileRef = 361533C4153F275800BB982B /* MKTAtLeastTimes.h */; };
 		361533C7153F275800BB982B /* MKTAtLeastTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = 361533C5153F275800BB982B /* MKTAtLeastTimes.m */; };
 		361533C9153F276300BB982B /* MKTAtLeastTimes.h in Headers */ = {isa = PBXBuildFile; fileRef = 361533C4153F275800BB982B /* MKTAtLeastTimes.h */; };
@@ -244,9 +240,6 @@
 		08FD4B251509B8740004E1FA /* StubProtocolTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubProtocolTest.m; sourceTree = "<group>"; };
 		08FD4B281509BEA90004E1FA /* MKTBaseMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTBaseMockObject.h; sourceTree = "<group>"; };
 		08FD4B291509BEA90004E1FA /* MKTBaseMockObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTBaseMockObject.m; sourceTree = "<group>"; };
-		1A37AC0918C203FA004596F1 /* MKTMockFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTMockFactory.h; sourceTree = "<group>"; };
-		1A37AC0A18C203FA004596F1 /* MKTMockFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTMockFactory.m; sourceTree = "<group>"; };
-		1A37AC0E18C20BDF004596F1 /* MKTMockFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTMockFactoryTest.m; sourceTree = "<group>"; };
 		361533C4153F275800BB982B /* MKTAtLeastTimes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTAtLeastTimes.h; sourceTree = "<group>"; };
 		361533C5153F275800BB982B /* MKTAtLeastTimes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTAtLeastTimes.m; sourceTree = "<group>"; };
 		361533CB153F283800BB982B /* MKTAtLeastTimesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTAtLeastTimesTest.m; sourceTree = "<group>"; };
@@ -383,8 +376,6 @@
 				0827E8521352BBBC00C39A57 /* MKTVerificationMode.h */,
 				BB3336ACE4225D6B90159620 /* NSInvocation+TKAdditions.h */,
 				BB33364DC41A888C0E0DA542 /* NSInvocation+TKAdditions.m */,
-				1A37AC0918C203FA004596F1 /* MKTMockFactory.h */,
-				1A37AC0A18C203FA004596F1 /* MKTMockFactory.m */,
 			);
 			path = OCMockito;
 			sourceTree = "<group>";
@@ -401,7 +392,6 @@
 				085A8BC6150718E30018EC66 /* MKTProtocolMockTest.m */,
 				08F189FC135A6D1300F76379 /* MKTInvocationMatcherTest.m */,
 				08F189E21359661E00F76379 /* MKTMockingProgressTest.m */,
-				1A37AC0E18C20BDF004596F1 /* MKTMockFactoryTest.m */,
 				085CE8F1172A0D43004D070D /* BlockMatchingTest.m */,
 				08FD4B1E1509A6C40004E1FA /* MockTestCase.h */,
 				08FD4B1F1509A6C40004E1FA /* MockTestCase.m */,
@@ -481,7 +471,6 @@
 				361533C6153F275800BB982B /* MKTAtLeastTimes.h in Headers */,
 				BB3339CB07B7B9D7EB2DED24 /* MKTArgumentCaptor.h in Headers */,
 				BB333C34005EB2306795E562 /* MKTCapturingMatcher.h in Headers */,
-				1A37AC0B18C203FA004596F1 /* MKTMockFactory.h in Headers */,
 				BB333F04719B4E40829FB969 /* NSInvocation+TKAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -689,7 +678,6 @@
 				0827E84B1352B7BF00C39A57 /* MKTMockingProgress.m in Sources */,
 				0827E86C1352CC6400C39A57 /* MKTExactTimes.m in Sources */,
 				0827E86F1353E30400C39A57 /* MKTVerificationData.m in Sources */,
-				1A37AC0D18C20405004596F1 /* MKTMockFactory.m in Sources */,
 				0827E8751353EAD900C39A57 /* MKTInvocationContainer.m in Sources */,
 				089A8C391356A7BB003E7D27 /* MKTOngoingStubbing.m in Sources */,
 				08F18A04135A6D8D00F76379 /* MKTInvocationMatcher.m in Sources */,
@@ -740,7 +728,6 @@
 				0827E84A1352B7BF00C39A57 /* MKTMockingProgress.m in Sources */,
 				0827E86B1352CC6400C39A57 /* MKTExactTimes.m in Sources */,
 				0827E86E1353E30400C39A57 /* MKTVerificationData.m in Sources */,
-				1A37AC0C18C203FA004596F1 /* MKTMockFactory.m in Sources */,
 				0827E8741353EAD900C39A57 /* MKTInvocationContainer.m in Sources */,
 				089A8C381356A7BB003E7D27 /* MKTOngoingStubbing.m in Sources */,
 				08F18A03135A6D8D00F76379 /* MKTInvocationMatcher.m in Sources */,
@@ -771,7 +758,6 @@
 				085A8BC7150718E30018EC66 /* MKTProtocolMockTest.m in Sources */,
 				08FD4B201509A6C40004E1FA /* MockTestCase.m in Sources */,
 				08FD4B231509A93B0004E1FA /* VerifyProtocolTest.m in Sources */,
-				1A37AC0F18C20BDF004596F1 /* MKTMockFactoryTest.m in Sources */,
 				08FD4B261509B8740004E1FA /* StubProtocolTest.m in Sources */,
 				638F68DD150FC3210081DEE6 /* MKTClassObjectMockTest.m in Sources */,
 				08C0A5A817FBDF6C00E76992 /* ArgumentCaptorTest.m in Sources */,
